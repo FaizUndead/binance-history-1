@@ -1,3 +1,4 @@
+import { setTimeout as setTimeoutPromise } from 'node:timers/promises';
 import binance, { AggregatedTrade } from 'binance-api-node';
 
 
@@ -32,12 +33,13 @@ export const getTradesForThePeriod = async (symbol: string, startTime: number, e
         trades.push(...currTrades);
 
         fromId = currTrades[currTrades.length - 1].aggId + 1;
+        await setTimeoutPromise(50);
 
     }
 
-    console.log(trades, 'trades');
-    console.log(trades.length, 'trades.length');
-    console.log(trades[trades.length - 1], 'trades.length');
+    // console.log(trades, 'trades');
+    // console.log(trades.length, 'trades.length');
+    // console.log(trades[trades.length - 1], 'trades.length');
 
     return trades;
     

@@ -5,6 +5,6 @@ export const getTradesHistory = async (req: Request, res: Response): Promise<voi
   const { startTime, endTime, symbol } = req.query;
   console.log(startTime, endTime);
 
-  const trades = await analizeTradesHistory(symbol as string, startTime as string, endTime as string);
-  res.json({ success: true, data: trades });
+  const result = await analizeTradesHistory(symbol as string, startTime as string, endTime as string);
+  res.json({ success: true, data: result });
 };
